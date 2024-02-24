@@ -41,14 +41,35 @@ function onSubmit(e) {
       return iziToast.error({ message: 'Enter correct city' });
     }
     weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data));
+    
     const saveButton = document.querySelector('.save-button');
+    searchForm.reset();
     saveButton.addEventListener('click', saveCity);
     function saveCity() {
+      
       localStorage.setItem('city', query);
+      saveButton.textContent = "Delete";
+      saveButton.addEventListener('click', deleteCity);
+      
+      
     }
-  });
+  })
+  
+        
 }
 
 if (savedCity) {
-  getWeather(savedCity).then(data => weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data)));
+  getWeather(savedCity).then(data => {
+    weatherDetails.insertAdjacentHTML('beforeend', createMarkup(data));
+    const saveButton = document.querySelector('.save-button');
+    saveButton.textContent = "Delete";
+    saveButton.addEventListener('click', deleteCity);
+    
+     })
+
 }
+
+function deleteCity() {
+        localStorage.removeItem("city");
+        weatherDetails.innerHTML = "";
+      }

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/weather-search/",
+    "build": "vite build --base=/weather-2/",
     "preview": "vite preview"
   },
   "devDependencies": {
