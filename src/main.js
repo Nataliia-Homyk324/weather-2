@@ -72,4 +72,20 @@ if (savedCity) {
 function deleteCity() {
         localStorage.removeItem("city");
         weatherDetails.innerHTML = "";
-      }
+}
+      
+//зміна тла 
+
+setInterval(() => { changeBackground() }, 4000);
+function changeBackground() {
+  const backgroundImg = document.querySelector('.hero-background-img');
+  const backgrounds = ['url(../img/Hero1.png)', 'url(../img/Hero2.png)', 'url(../img/Hero3.png)'];
+  const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  backgroundImg.style.backgroundImage = randomBg;
+  backgroundImg.style.width = '100%';
+  backgroundImg.style.height = '100%';
+  backgroundImg.style.size = 'cover';
+  backgroundImg.style.repeat = 'no-repeat';
+  backgroundImg.style.overflow = 'hidden';
+  backgroundImg.style.transition = 'background-image 500ms linear '
+}
